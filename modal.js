@@ -18,7 +18,6 @@ const hero_section = document.querySelector(".hero-section");
 const topnav = document.querySelector(".topnav");
 const footer = document.querySelector("footer");
 const confirmed = document.querySelector(".confirmed");
-
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
@@ -101,8 +100,6 @@ function checkBirthdate(input) {
     input.parentElement.removeAttribute("data-error-visible");
     const currentYear = new Date();
     const selectedYear = new Date(document.getElementById("birthdate").value);
-
-    // Vérification de la majorité de l'utilisateur
     if (checkAge(currentYear, selectedYear) >= 18) {
       input.parentElement.removeAttribute("data-error");
       input.parentElement.removeAttribute("data-error-visible");
@@ -126,8 +123,6 @@ function checkAge(currentDate, birthDate) {
   var day = 1000 * 60 * 60 * 24;
   var days = Math.floor(diff / day);
   var years = Math.floor(days / 365.25);
-  console.log("age : " + years + " ans");
-
   return years;
 }
 // number of the tournament
@@ -147,33 +142,6 @@ function checkQuantity(input) {
     return false;
   }
 }
-// verification de la date de naissance
-function checkBirthdate(input) {
-  if (input.value) {
-    input.parentElement.removeAttribute("data-error");
-    input.parentElement.removeAttribute("data-error-visible");
-    const currentYear = new Date();
-    const selectedYear = new Date(document.getElementById("birthdate").value);
-
-    // Vérification de la majorité de l'utilisateur
-    if (checkAge(currentYear, selectedYear) >= 18) {
-      input.parentElement.removeAttribute("data-error");
-      input.parentElement.removeAttribute("data-error-visible");
-      return true;
-    } else {
-      input.parentElement.setAttribute("data-error", "Vous devez être majeur.");
-      input.parentElement.setAttribute("data-error-visible", true);
-    }
-  } else {
-    input.parentElement.setAttribute(
-      "data-error",
-      "Vous devez entrer votre date de naissance."
-    );
-    input.parentElement.setAttribute("data-error-visible", true);
-    return false;
-  }
-}
-
 // verification du nombre
 function checkQuantity(input) {
   var regex = /^\d$/;
@@ -209,7 +177,7 @@ function validate() {
   let isRadioValid = false;
   let isCheckboxValid = false;
 
-  if (radio_value == null) {
+  if (radio_value === null) {
     const radio_parent = document.querySelector(
       'input[name="location"]'
     ).parentNode;
@@ -219,7 +187,7 @@ function validate() {
     isRadioValid = true;
   }
   const check_value = document.getElementById("checkbox1").checked;
-  if (check_value == false) {
+  if (check_value === false) {
     const check_parent = document.querySelector(
       'input[id="checkbox1"]'
     ).parentNode;
@@ -247,11 +215,10 @@ function validate() {
     isRadioValid
   );
 }
-
 // déclenchement de l'événement de la validation du formulaire
 form.addEventListener("submit", function (event) {
   event.preventDefault();
-  if (validate() == true) {
+  if (validate() === true) {
     document.querySelector("form").reset();
     const modalBody = document.getElementById("modal-body");
     modalBody.innerHTML = `
@@ -265,21 +232,8 @@ form.addEventListener("submit", function (event) {
     modalbg.setAttribute("bground-mobile", true);
   }
 });
-
-// fermer la confirmation
-function closeConfirmation() {
-  hero_section.style.display = "grid";
-  content_valid.style.display = "none";
-  confirmed.style.display = "none";
-  topnav.style.display = "initial";
-  footer.style.display = "initial";
-}
 // fermer formulaire
 function closeForm() {
   form.style.display = "none";
   modalBody.innerHTML = initial;
 }
-/* function checkEmail () {
-  const email = document.querySelector(".formData");
-  const regex = /^[A-Za-z0-9+_.-]+@(=/;
-}*/
