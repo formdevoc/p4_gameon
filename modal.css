@@ -28,6 +28,8 @@ p {
 
 img {
   padding-right: 1rem;
+  margin-left: 2rem;
+  width: 54%;
 }
 
 .topnav {
@@ -451,7 +453,7 @@ input[data-error]::after {
 .hero-text {
   width: 146%;
   font-weight: normal;
-  margin-top: 57px;
+  margin-top: 30px;
   padding: 0;
 }
 .btn-signup {
@@ -490,6 +492,7 @@ footer {
   .hero-section {
     display: block;
     box-shadow: unset;
+    min-height: 85vh;
   }
   .hero-content {
     background: #fff;
@@ -503,12 +506,14 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2rem;
     white-space: normal;
+    font-weight: bold;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 0.9rem;
+    font-weight: bold;
   }
   .hero-img img {
     border-radius: 10px;
@@ -520,7 +525,7 @@ footer {
     padding: 12px 35px;
   }
   .copyrights {
-    margin-top: 50px;
+    margin-top: 20px;
     text-align: center;
   }
 }

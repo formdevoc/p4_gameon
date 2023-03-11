@@ -39,9 +39,8 @@ var initial = modalBody.innerHTML;
 function checkFirstName(input, type) {
   const regex =
     /^[a-zA-Z\-éëàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇÆæœ]{2,}$/;
-  const input_value = input.value;
-  const test = regex.test(input_value);
-  if (test) {
+  const inputValue = input.value.split(" ").join("");
+  if (inputValue.length >= 3) {
     input.parentElement.removeAttribute("data-error");
     input.parentElement.removeAttribute("data-error-visible");
     return true;
@@ -59,9 +58,8 @@ function checkFirstName(input, type) {
 function checkLastName(input, type) {
   const regex =
     /^[a-zA-Z\-éëàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇÆæœ]{2,}$/;
-  const input_value = input.value;
-  const test = regex.test(input_value);
-  if (test) {
+  const inputValue = input.value.split(" ").join("");
+  if (inputValue.length >= 3) {
     input.parentElement.removeAttribute("data-error");
     input.parentElement.removeAttribute("data-error-visible");
     return true;
@@ -99,7 +97,7 @@ function checkBirthdate(input) {
     input.parentElement.removeAttribute("data-error");
     input.parentElement.removeAttribute("data-error-visible");
     const currentYear = new Date();
-    const selectedYear = new Date(document.getElementById("birthdate").value);
+    const selectedYear = new Date(document.getElementById("dates").value);
     if (checkAge(currentYear, selectedYear) >= 18) {
       input.parentElement.removeAttribute("data-error");
       input.parentElement.removeAttribute("data-error-visible");
@@ -164,7 +162,7 @@ function checkQuantity(input) {
 function validate() {
   const first = document.getElementById("first");
   const last = document.getElementById("last");
-  const date = document.getElementById("birthdate");
+  const date = document.getElementById("dates");
   const quantity = document.getElementById("quantity");
   const radio_value = document.querySelector('input[name="location"]:checked');
   const email = document.getElementById("email");
